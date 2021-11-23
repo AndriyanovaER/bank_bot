@@ -24,8 +24,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 import pickle
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
-
-
+import streamlit as st
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
@@ -256,14 +255,6 @@ def answer(update, context):
         response = "Пожулуйста, выберете тему обращения:"
         update.message.reply_text(response, reply_markup=markup)
 
-    # elif intent == 'lost_or_extra_money':
-    #     reply_keyboard = [['недостаточно средств на счете'],
-    #                       ['лишние деньги на счете'],
-    #                       ['другой вопрос']]
-    #     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
-    #     response = "Пожулуйста, выберете тему обращения:"
-    #     update.message.reply_text(response, reply_markup=markup)
-
     elif intent == 'payment_delay':
         reply_keyboard = [['отсрочка платежа'],
                           ['реструктуризация кредита'],
@@ -282,7 +273,7 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
-def main():
+# def main():
 
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
@@ -312,5 +303,5 @@ def main():
     updater.idle()
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
