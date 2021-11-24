@@ -19,7 +19,7 @@ import logging
 import regex as re
 import pandas as pd
 # import os
-import nltk
+# import nltk
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 import pickle
@@ -173,9 +173,9 @@ def answer(update, context):
     df_chat_message['message'] = [message]
 
     # токенизируем сообщение
-    tokenizer = nltk.tokenize.WordPunctTokenizer()
-    df_chat_message['message'] = df_chat_message['message'].apply(
-        lambda text: ' '.join(tokenizer.tokenize(text.lower())))
+#     tokenizer = nltk.tokenize.WordPunctTokenizer()
+#     df_chat_message['message'] = df_chat_message['message'].apply(
+#         lambda text: ' '.join(tokenizer.tokenize(text.lower())))
 
     # векторизуем сообщение
     chat_message_count = count_vect.transform(df_chat_message['message'])
