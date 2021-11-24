@@ -273,7 +273,7 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 
-# def main():
+def main():
 
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
@@ -295,7 +295,12 @@ def error(update, context):
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                          port=PORT,
+                          url_path="2125929704:AAHYhmEyEsWCCX1R9KPgPiA2oZau3xzVXbc")
+    # updater.bot.set_webhook(url=settings.WEBHOOK_URL)
+    updater.bot.set_webhook("andriyanova-bot" + "2125929704:AAHYhmEyEsWCCX1R9KPgPiA2oZau3xzVXbc")
+
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
@@ -303,5 +308,5 @@ def error(update, context):
     updater.idle()
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
